@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>JavaScript Selected Value</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div id="container">
+            <form>
+                <label for="framework">Framework:</label>
+                <br>
+                <input type="text" id="framework" placeholder="Enter a framework" autocomplete="off">
+
+                <button id="btnAdd">Add</button>
+                <br>
+
+                <label for="list">Framework List:</label>
+                <br>
+                <select id="list" name="list" multiple>
+
+                </select>
+                <br>
+                <button id="btnRemove">Remove Selected Framework</button>
+            </form>
+        </div>
+
+
+        <script>
+            const btnAdd = document.querySelector('#btnAdd');
+            const btnRemove = document.querySelector('#btnRemove');
+            const listbox = document.querySelector('#list');
+            const framework = document.querySelector('#framework');
+
+            btnAdd.addEventListener('click', (e)=>{
+                e.preventDefault();
+                if(framework.value == ''){
+                    alert('Please enter the name');
+                    return;
+                }
+                const option = new Option(framework.value, framework.value);
+                listbox.add(option, undefined);
+
+                framework.value = '';
+                framework.focus();
+            })
+
+            btnRemove.addEventListener('click', (e)=>{
+                e.preventDefault();
+                let selected = [];
+                for(let i=0; i<listbox.options.length; i++){
+                    selected[i] = listbox.options[i].selected;
+                }
+                let index = listbox.options.length;
+                    while (index--) {
+                        if (selected[index]) {
+                        listbox.remove(index);
+                        }
+                    }
+            })
+        </script>
+    </body>
+</html>

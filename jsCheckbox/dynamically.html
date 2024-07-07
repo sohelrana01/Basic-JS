@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamically checkboxes</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script>
+        const colors = ['Red', 'Green', 'blue']
+        colors.forEach((color)=>{
+            const id = `color-${color}`;
+
+            // create label
+            const label = document.createElement('label');
+            label.setAttribute('for', id);
+
+            // create checkbox
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.name = 'color';
+            checkbox.value = 'color';
+            checkbox.id = id;
+
+            label.appendChild(checkbox);
+            label.appendChild(document.createTextNode(color));
+
+            document.querySelector('#root').appendChild(label)
+        })
+    </script>
+</body>
+</html>

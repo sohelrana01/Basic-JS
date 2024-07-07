@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Select Demo</title>
+</head>
+<body>
+    <div id="container">
+        <form>
+            <label for="framework">Select one or more JS Framework:</label>
+            <br>
+            <select name="select" id="framework" multiple>
+                <option value="1">React.js</option>
+                <option value="2">Vue.js</option>
+                <option value="3">Svelt.js</option>
+                <option value="4">Ember.js</option>
+            </select>
+            <br>
+            <button id="btn">Get Selected Frameworks</button>
+        </form>
+    </div>
+
+    <script>
+        const btn = document.querySelector('#btn');
+        const sb = document.querySelector('#framework');
+
+        btn.addEventListener('click', (e)=>{
+            e.preventDefault();
+            const selectedValues = [].filter
+                .call(sb.options, option => option.selected)
+                .map(option => option.text);
+            alert(selectedValues)
+        })
+    </script>
+</body>
+</html>
